@@ -13,7 +13,7 @@ export class AccountOpeningComponent {
 
   onSubmit() {
     this.http
-      .post('https://jsonplaceholder.typicode.com/posts', this.model)
+      .post('http://localhost:8080/clients/register', this.model)
       .subscribe(
         (response) => {
           console.log('Account created', response);

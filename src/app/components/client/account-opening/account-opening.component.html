@@ -2,11 +2,11 @@
   <h2 class="text-center mb-4">Ouverture d'un compte de paiement</h2>
   <form (ngSubmit)="onSubmit()" #accountForm="ngForm">
     <div class="form-group">
-      <label for="product">Sélectionner un produit</label>
+      <label for="accountType">Sélectionner un produit</label>
       <select
-        id="product"
-        [(ngModel)]="model.product"
-        name="product"
+        id="accountType"
+        [(ngModel)]="model.accountType"
+        name="accountType"
         class="form-control"
         required
       >
@@ -17,23 +17,23 @@
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="nom">Nom</label>
+        <label for="lastname">Nom</label>
         <input
           type="text"
-          id="nom"
-          [(ngModel)]="model.nom"
-          name="nom"
+          id="lastname"
+          [(ngModel)]="model.lastname"
+          name="lastname"
           class="form-control"
           required
         />
       </div>
       <div class="form-group col-md-6">
-        <label for="prenom">Prénom</label>
+        <label for="firstname">Prénom</label>
         <input
           type="text"
-          id="prenom"
-          [(ngModel)]="model.prenom"
-          name="prenom"
+          id="firstname"
+          [(ngModel)]="model.firstname"
+          name="firstname"
           class="form-control"
           required
         />
@@ -41,12 +41,12 @@
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="telephone">Téléphone</label>
+        <label for="phone">Téléphone</label>
         <input
           type="tel"
-          id="telephone"
-          [(ngModel)]="model.telephone"
-          name="telephone"
+          id="phone"
+          [(ngModel)]="model.phone"
+          name="phone"
           class="form-control"
           required
         />
