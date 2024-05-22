@@ -7,7 +7,5 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./registration-success.component.css'],
 })
 export class RegistrationSuccessComponent {
-  ngOnInit(): void {
-    // Any initialization logic can go here
-  }
+  ngOnInit(): void {}
 }

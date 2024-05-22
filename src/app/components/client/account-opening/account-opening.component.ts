@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ClientAccountService } from '../../../services/client-account.service';
 @Component({
   selector: 'app-account-opening',
   templateUrl: './account-opening.component.html',
@@ -9,19 +10,22 @@ import { Router } from '@angular/router';
 export class AccountOpeningComponent {
   model: any = {};
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private clientaccountService: ClientAccountService,
+    private router: Router
+  ) {}
 
   onSubmit() {
-    this.http
-      .post('https://jsonplaceholder.typicode.com/posts', this.model)
-      .subscribe(
-        (response) => {
-          console.log('Account created', response);
-          this.router.navigate(['/registration-success']);
-        },
-        (error) => {
-          console.error('Error creating account', error);
-        }
-      );
+    // Use the service to create the account
+    this.clientaccountService.createAccount(this.model).subscribe(
+      (response: any) => {
+        console.log('Account created', response);
+        this.router.navigate(['/registration-success']);
+      },
+      (error: any) => {
+        console.error('Error creating account', error);
+        // Handle errors appropriately, e.g., display an error message to the user
+      }
+    );
   }
 }
