@@ -1,0 +1,49 @@
+<style>
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+</style>
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Connexion au compte client</h2>
+  <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+    <div class="form-group">
+      <label for="phoneNumber">Phone number</label>
+      <input
+        type="number"
+        id="phoneNumber"
+        [(ngModel)]="loginModel.phoneNumber"
+        name="email"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="password">Mot de passe</label>
+      <input
+        type="password"
+        id="password"
+        [(ngModel)]="loginModel.password"
+        name="password"
+        class="form-control"
+        required
+      />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-warning btn-block">
+      Se connecter
+    </button>
+  </form>
+</div>

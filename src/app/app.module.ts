@@ -7,11 +7,15 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegistrationSuccessComponent } from './components/client/registration-success/registration-success.component';
+import { LoginComponent } from './components/client/login/login.component';
+import { ChangePasswordComponent } from './components/client/change-password/change-password.component';
 @NgModule({
   declarations: [
     AppComponent,
     AccountOpeningComponent,
     RegistrationSuccessComponent,
+    LoginComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,
