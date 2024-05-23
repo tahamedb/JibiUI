@@ -1,0 +1,53 @@
+<div class="bg-beige flex flex-col items-center min-h-screen px-4 py-8 ">
+  <div class="title-section w-full max-w-6xl mb-8">
+    <h1 class="text-3xl font-coco-gothic text-left">Effectuer un paiement</h1>
+  </div>
+  <div class="content-wrapper bg-white shadow-md rounded-lg flex w-full max-w-6xl">
+    <div class="image-container w-1/3 flex items-center justify-center max-w-80 max-h-30 p-8">
+      <img src="{{creanceForm?.creancierLogo}}" alt="Creance image" class="object-cover h-auto max-h-80 max-w-full">
+    </div>
+    <div class="form-container w-2/3 flex flex-col justify-center p-8">
+      <div class="w-full">
+        <h2 class="text-xl font-bold mb-6">{{ creanceForm?.name }}</h2>
+        <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()" class="w-full">
+          <div *ngFor="let field of formFields">
+            <div class="form-group mb-4">
+              <input
+                [type]="field.type"
+                [id]="field.key"
+                [formControlName]="field.key"
+                [placeholder]="field.placeholder"
+                class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-500 font-bold">
+            </div>
+          </div>
+          <div class="flex justify-end mt-4 space-x-4">
+            <button type="button" class="inline-flex items-center px-4 py-2 bg-gray-300 text-black font-bold rounded-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              Annuler
+            </button>
+            <button type="submit" [disabled]="!dynamicForm.valid" class="inline-flex items-center px-4 py-2 bg-yellow-500 text-white font-bold rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50">
+              Valider
+            </button>
+          </div>
+        </form>
+        <div *ngIf="errorMessage" class="mt-4 text-red-600">{{ errorMessage }}</div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Factures Section -->
+  <div *ngIf="creanceForm?.creancetype === 'FACTURE' && factures.length > 0" class="w-full max-w-6xl mt-8">
+    <h3 class="text-2xl font-bold mb-4">Factures:</h3>
+    <div *ngFor="let facture of factures" class="mb-4 p-4 px-6 border bg-white border-gray-300 rounded-md shadow-md flex justify-between items-center">
+      <div> 
+        <p class="mb-2">Mois de facturation: {{ facture.month }}</p>
+        <p class="mb-2">Echeance: {{ facture.echeance | date:'short' }}</p>
+        <p class="mb-2 text-red-600 font-bold ">Montant: {{ facture.montant }} DH</p>
+      </div>
+      <form (ngSubmit)="onPress(facture)" class="ml-4">
+        <button type="submit" class="inline-flex items-center px-4 py-2 bg-blue-500 text-white font-bold rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Payer
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
