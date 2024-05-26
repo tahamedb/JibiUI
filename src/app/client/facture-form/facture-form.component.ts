@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FactureService } from '../Service/facture.service';
+import { FactureService } from '../../Service/facture.service';
 
 @Component({
   selector: 'app-facture-payment',

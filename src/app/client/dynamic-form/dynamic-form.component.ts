@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CreanceService } from "../Service/creance.service";
-import { CreanceFormDTO } from "../models/creancieForm.model";
+import { CreanceService } from "../../Service/creance.service";
+import { CreanceFormDTO } from "../../models/creancieForm.model";
 import { DatePipe } from '@angular/common';
-import { Facture } from '../models/facture.model';
-import { FactureService } from '../Service/facture.service';
+import { Facture } from '../../models/facture.model';
+import { FactureService } from '../../Service/facture.service';
 
 
 @Component({

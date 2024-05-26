@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {CreancierService} from "../Service/creanciers.service";
+import {CreancierService} from "../../Service/creanciers.service";
 import {Observable} from "rxjs";
-import {Creancier} from "../models/creancier.model";
+import {Creancier} from "../../models/creancier.model";
 
 @Component({
   selector: 'app-payment',

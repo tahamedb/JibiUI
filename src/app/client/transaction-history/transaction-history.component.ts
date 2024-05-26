@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TransactionService } from '../service/transaction.service';
-import { Transaction } from '../models/transaction.model';
+import { TransactionService } from '../../Service/transaction.service';
+import { Transaction } from '../../models/transaction.model';
+import {UserSessionService} from "../../Service/user-session/user-session.service";
 
 @Component({
   selector: 'app-transaction-history',
@@ -15,14 +16,15 @@ export class TransactionHistoryComponent implements OnInit {
   totalPages: number = 0;
   pages: number[] = [];
 
-  constructor(private transactionService: TransactionService) {}
+  constructor(private transactionService: TransactionService,private userAccountService : UserSessionService) {}
 
   ngOnInit(): void {
     this.fetchTransactions();
   }
 
   fetchTransactions(): void {
-    const clientId = 123; // Replace with actual client ID from authentication
+    const clientId = 123;
+    const clientidTOImplement =this.userAccountService.phoneNumber; // Replace with actual client ID from authentication
 
     this.transactionService.getTransactionsByClientId(clientId).subscribe(transactions => {
       this.transactions = transactions;
