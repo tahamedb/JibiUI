@@ -5,13 +5,11 @@ import { Injectable } from '@angular/core';
 })
 export class UserSessionService {
   private phoneNumber!: string;
-
   setPhoneNumber(phone: string) {
-    sessionStorage.setItem(this.phoneNumber, phone);
+    sessionStorage.setItem("phoneNumber", phone);
     this.phoneNumber = phone;
   }
-
-  getPhoneNumber(): string {
-    return this.phoneNumber;
+  getPhoneNumber(): string | null {
+    return sessionStorage.getItem("phoneNumber");
   }
 }

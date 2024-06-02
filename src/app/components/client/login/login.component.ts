@@ -9,7 +9,10 @@ import {UserSessionService} from "../../../services/user-session/user-session.se
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  loginModel: any = {};
+  loginModel = {
+    phoneNumber: '',
+    password: ''
+  };
   constructor(
     private router: Router,
     private clientAccountService: ClientAccountService,
