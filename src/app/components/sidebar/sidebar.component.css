@@ -1,0 +1,41 @@
+*{
+  vertical-align: middle;
+
+}
+
+
+a[mat-list-item] {
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: inherit;
+
+}
+
+a[mat-list-item]:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+a[mat-list-item].active {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.menu-icon {
+  margin-right: 16px;
+  color: #e78d43;
+}
+
+.menu-text {
+  color: white;
+
+}
+.menu-item-logout{
+display: flex;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 15px;
+}
+
+

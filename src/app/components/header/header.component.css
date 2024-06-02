@@ -1,0 +1,20 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(37, 37, 38);
+  color: white
+}
+mat-list-item{
+  display: flex;
+  margin:10px;
+  padding:40px;
+}
+
+  button {
+  color: #e78d43;
+}
