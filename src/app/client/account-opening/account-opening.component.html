@@ -1,0 +1,69 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Ouverture d'un compte de paiement</h2>
+  <form (ngSubmit)="onSubmit()" #accountForm="ngForm">
+    <div class="form-group">
+      <label for="accountType">Sélectionner un produit</label>
+      <select
+        id="accountType"
+        [(ngModel)]="model.accountType"
+        name="accountType"
+        class="form-control"
+        required
+      >
+        <option value="hssab1">Hssab 1 - Plafond : 200 DH</option>
+        <option value="hssab2">Hssab 2 - Plafond : 2000 DH</option>
+        <option value="hssab3">Hssab 3 - Plafond : 2000 DH</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="lastname">Nom</label>
+        <input
+          type="text"
+          id="lastname"
+          [(ngModel)]="model.lastname"
+          name="lastname"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="firstname">Prénom</label>
+        <input
+          type="text"
+          id="firstname"
+          [(ngModel)]="model.firstname"
+          name="firstname"
+          class="form-control"
+          required
+        />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="phone">Téléphone</label>
+        <input
+          type="tel"
+          id="phone"
+          [(ngModel)]="model.phone"
+          name="phone"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          [(ngModel)]="model.email"
+          name="email"
+          class="form-control"
+          required
+        />
+      </div>
+      <br />
+    </div>
+    <button type="submit" class="btn btn-warning btn-block p">Suivant</button>
+  </form>
+</div>
