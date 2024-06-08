@@ -1,4 +1,84 @@
-<mat-nav-list>
+<style>
+  .sidebar {
+    /*background: linear-gradient(135deg, #7f7fd5, #86a8e7, #91eae4);*/
+    padding: 20px;
+    border-radius: 16px;
+    /*box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);*/
+  }
+
+  .menu-item {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #ffffff;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-bottom: 10px;
+  }
+
+  .menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .menu-item.active {
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .menu-icon {
+    margin-right: 16px;
+    color: #ffffff;
+    font-size: 24px;
+    transition: transform 0.3s ease;
+  }
+
+  .menu-item:hover .menu-icon {
+    transform: scale(1.2);
+  }
+
+  .menu-text {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  .menu-item-logout {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #090707;
+    /*background-color: rgba(94, 23, 6, 0.99);*/
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .menu-item-logout:hover {
+    background-color: rgba(35, 16, 16, 0.94);
+    transform: translateY(-2px);
+  }
+
+  .menu-item-logout .menu-icon {
+    margin-right: 16px;
+    color: #ffffff;
+    font-size: 24px;
+    transition: transform 0.3s ease;
+  }
+
+  .menu-item-logout:hover .menu-icon {
+    transform: scale(1.2);
+  }
+</style>
+
+<mat-nav-list class="sidebar">
   <a mat-list-item routerLink="/dashboard" routerLinkActive="active" class="menu-item">
     <mat-icon class="menu-icon">dashboard</mat-icon>
     <span class="menu-text">Dashboard</span>
@@ -15,11 +95,8 @@
     <mat-icon class="menu-icon">settings</mat-icon>
     <span class="menu-text">Settings</span>
   </a>
-  <a mat-list-item routerLink="/logout" routerLinkActive="active" class="menu-item-logout">
+  <a mat-list-item routerLink="/logout" class="menu-item-logout">
     <mat-icon class="menu-icon">logout</mat-icon>
     <span class="menu-text">Logout</span>
   </a>
-  <br>
-  <br>
-
 </mat-nav-list>

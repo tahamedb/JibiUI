@@ -1,33 +1,111 @@
-<div class="container mt-5">
-  <h2 class="text-center mb-4">Ouverture d'un compte de paiement</h2>
+<style>
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .title {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    color: #333333;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .form-field {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .form-row {
+    display: flex;
+    gap: 20px;
+  }
+
+  .form-row .form-field {
+    flex: 1;
+  }
+
+  .button-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  .button-row button {
+    width: 120px;
+    height: 48px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 24px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .button-row button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .button-row button mat-icon {
+    margin-right: 8px;
+  }
+
+  .submit-button {
+    width: 160px;
+    height: 56px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 28px;
+    background-color: #ff6b6b;
+    color: #ffffff;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .submit-button:hover {
+    background-color: #ff4f4f;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+</style>
+<div class="container">
+  <h2 class="title">Ouverture d'un compte de paiement</h2>
   <mat-vertical-stepper linear>
     <form (ngSubmit)="onSubmit()" #accountForm="ngForm">
-      <!-- Step 1 -->
       <mat-step [stepControl]="accountForm.form.controls['accountType']">
         <ng-template matStepLabel>Selectionner un produit</ng-template>
-        <mat-form-field color="primary" appearance="outline" class="full-width">
-          <mat-label margin-bottom="4px">Selectionner un produit</mat-label>
+        <mat-form-field color="primary" appearance="outline" class="form-field">
+          <mat-label>Selectionner un produit</mat-label>
           <mat-select
             id="accountType"
             [(ngModel)]="model.accountType"
             name="accountType"
             required
-            style="margin-top:5px"
           >
             <mat-option value="hssab1">Hssab 1 - Plafond : 200 DH</mat-option>
             <mat-option value="hssab2">Hssab 2 - Plafond : 2000 DH</mat-option>
             <mat-option value="hssab3">Hssab 3 - Plafond : 2000 DH</mat-option>
           </mat-select>
         </mat-form-field>
-        <div>
-          <button mat-button matStepperNext color="accent" ><mat-icon>arrow_forward</mat-icon>Suivant</button>
+        <div class="button-row">
+          <div></div>
+          <button mat-raised-button color="accent" matStepperNext>
+            <mat-icon>arrow_forward</mat-icon>Suivant
+          </button>
         </div>
       </mat-step>
-
       <mat-step [stepControl]="accountForm.form.controls['lastname']">
         <ng-template matStepLabel>Informations personnelles</ng-template>
         <div class="form-row">
-          <mat-form-field color="primary" appearance="fill" class="col-md-6">
+          <mat-form-field color="primary" appearance="outline" class="form-field">
             <mat-label>Nom</mat-label>
             <input
               matInput
@@ -38,7 +116,7 @@
               required
             />
           </mat-form-field>
-          <mat-form-field appearance="fill" class="col-md-6">
+          <mat-form-field appearance="outline" class="form-field">
             <mat-label>Prénom</mat-label>
             <input
               matInput
@@ -50,17 +128,18 @@
             />
           </mat-form-field>
         </div>
-        <div>
+        <div class="button-row">
           <button mat-button matStepperPrevious>Précédent</button>
-          <button mat-button matStepperNext color="accent" ><mat-icon>arrow_forward</mat-icon>Suivant</button>
+          <button mat-raised-button color="accent" matStepperNext>
+            <mat-icon>arrow_forward</mat-icon>Suivant
+          </button>
         </div>
       </mat-step>
 
-      <!-- Step 3 -->
       <mat-step [stepControl]="accountForm.form.controls['phone']">
         <ng-template matStepLabel>Contact</ng-template>
         <div class="form-row">
-          <mat-form-field appearance="fill" class="col-md-6">
+          <mat-form-field appearance="outline" class="form-field">
             <mat-label>Téléphone</mat-label>
             <input
               matInput
@@ -71,7 +150,7 @@
               required
             />
           </mat-form-field>
-          <mat-form-field appearance="fill" class="col-md-6">
+          <mat-form-field appearance="outline" class="form-field">
             <mat-label>Email</mat-label>
             <input
               matInput
@@ -83,15 +162,15 @@
             />
           </mat-form-field>
         </div>
-        <div>
+        <div class="button-row">
           <button mat-button matStepperPrevious>Précédent</button>
-            <button
-              mat-button
-              color="accent"
-              mat-flat-button
-              (click)="onSubmit()"
-            >
-              Register
+          <button
+            mat-raised-button
+            color="accent"
+            class="submit-button"
+            (click)="onSubmit()"
+          >
+            Register
           </button>
         </div>
       </mat-step>

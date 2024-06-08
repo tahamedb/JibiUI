@@ -5,7 +5,7 @@ import { ClientAccountService } from '../../../services/client-account.service';
 @Component({
   selector: 'app-account-opening',
   templateUrl: './account-opening.component.html',
-  styleUrls: ['./account-opening.component.css'],
+  styleUrls: ['./account-opening.component.scss'],
 })
 export class AccountOpeningComponent {
   model: any = {};
@@ -16,7 +16,6 @@ export class AccountOpeningComponent {
   ) {}
 
   onSubmit() {
-    // Use the service to create the account
     this.clientaccountService.createAccount(this.model).subscribe(
       (response: any) => {
         console.log('Account created', response);
@@ -24,7 +23,6 @@ export class AccountOpeningComponent {
       },
       (error: any) => {
         console.error('Error creating account', error);
-        // Handle errors appropriately, e.g., display an error message to the user
       }
     );
   }

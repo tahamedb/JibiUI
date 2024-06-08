@@ -4,8 +4,11 @@
 
 mat-sidenav {
   width: 250px;
-  background: #252526;
+  background: linear-gradient(135deg, #7f7fd5, #86a8e7, #91eae4);
   color: white;
+  box-shadow: 0 8px 100px rgba(0, 0, 0, 0.2);
+  /*border-radius: 16px;*/
+
 }
 
 .toggle-button {

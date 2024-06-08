@@ -1,16 +1,83 @@
+<style>
+  .profile-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+  }
+
+  .profile-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .profile-title {
+    font-size: 36px;
+    font-weight: 600;
+    color: #333333;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .profile-content {
+    font-size: 18px;
+    color: #666666;
+    margin-bottom: 20px;
+  }
+
+  .profile-field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .profile-label {
+    font-weight: bold;
+    margin-right: 10px;
+    flex-basis: 120px;
+  }
+
+  .qr-code-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+  }
+
+  .loading-spinner {
+    margin-bottom: 20px;
+  }
+
+  .loading-message {
+    font-size: 18px;
+    color: #666666;
+  }
+</style>
+
 <mat-card *ngIf="profile" class="profile-container">
-  <mat-card-header>
-    <mat-card-title>Profile</mat-card-title>
+  <mat-card-header class="profile-header">
+    <mat-card-title class="profile-title">Profile</mat-card-title>
   </mat-card-header>
-  <mat-card-content>
-    <div>
-      <strong>Name:</strong> {{ profile.name }}
+  <mat-card-content class="profile-content">
+    <div class="profile-field">
+      <span class="profile-label">Name:</span>
+      <span>{{ profile.name }}</span>
     </div>
-    <div>
-      <strong>Email:</strong> {{ profile.email }}
+    <div class="profile-field">
+      <span class="profile-label">Email:</span>
+      <span>{{ profile.email }}</span>
     </div>
-    <div>
-      <strong>Phone Number:</strong> {{ profile.phoneNumber }}
+    <div class="profile-field">
+      <span class="profile-label">Phone Number:</span>
+      <span>{{ profile.phoneNumber }}</span>
     </div>
     <!-- Add more fields as necessary -->
     <div class="qr-code-container">
@@ -18,10 +85,12 @@
     </div>
   </mat-card-content>
 </mat-card>
-<div *ngIf="isLoading">
-  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
-  <p>Loading profile data...</p>
+
+<div *ngIf="isLoading" class="loading-container">
+  <mat-progress-spinner class="loading-spinner" mode="indeterminate"></mat-progress-spinner>
+  <p class="loading-message">Loading profile data...</p>
 </div>
-<div *ngIf="!isLoading && !profile">
-  <p>No profile data available.</p>
+
+<div *ngIf="!isLoading && !profile" class="loading-container">
+  <p class="loading-message">No profile data available.</p>
 </div>

@@ -1,49 +1,96 @@
 <style>
-  .container {
-    max-width: 600px;
-    margin: 0 auto;
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background: linear-gradient(135deg, #7f7fd5, #86a8e7, #91eae4);
   }
 
-  h2 {
-    font-size: 24px;
-  }
-
-  .form-group {
-    margin-bottom: 15px;
-  }
-
-  .btn {
+  .login-card {
+    max-width: 500px;
     width: 100%;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+  }
+
+  .title {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    color: #333333;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .form-field {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .login-button {
+    width: 100%;
+    height: 56px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 28px;
+    background-color: #ff6b6b;
+    color: #ffffff;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .login-button:hover {
+    background-color: #ff4f4f;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   }
 </style>
-<div class="container mt-5">
-  <h2 class="text-center mb-4">Connexion au compte client</h2>
-  <form (ngSubmit)="onLogin()" #loginForm="ngForm">
-    <div class="form-group">
-      <label for="phoneNumber">Phone number</label>
-      <input
-        type="number"
-        id="phoneNumber"
-        [(ngModel)]="loginModel.phoneNumber"
-        name="phoneNumber"
-        class="form-control"
-        required
-      />
-    </div>
-    <div class="form-group">
-      <label for="password">Mot de passe</label>
-      <input
-        type="password"
-        id="password"
-        [(ngModel)]="loginModel.password"
-        name="password"
-        class="form-control"
-        required
-      />
-    </div>
-    <br />
-    <button type="submit" class="btn btn-warning btn-block">
-      Se connecter
-    </button>
-  </form>
+
+<div class="login-container">
+  <mat-card class="login-card">
+    <mat-card-title class="title">Connexion au compte client</mat-card-title>
+    <mat-card-content>
+      <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Phone number</mat-label>
+          <input
+            matInput
+            type="tel"
+            id="phoneNumber"
+            [(ngModel)]="loginModel.phoneNumber"
+            name="phoneNumber"
+            required
+          />
+          <mat-error>Please enter a valid phone number</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Mot de passe</mat-label>
+          <input
+            matInput
+            type="password"
+            id="password"
+            [(ngModel)]="loginModel.password"
+            name="password"
+            required
+          />
+          <mat-error>Please enter your password</mat-error>
+        </mat-form-field>
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="login-button"
+        >
+          Se connecter
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>
