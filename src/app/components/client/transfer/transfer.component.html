@@ -1,0 +1,16 @@
+<!-- transfer.component.html -->
+<form [formGroup]="transferForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="reciever">Reciever:</label>
+    <input id="reciever" formControlName="reciever" type="text" >
+  </div>
+  <div>
+    <label for="amount">Amount:</label>
+    <input id="amount" formControlName="amount" type="text">
+  </div>
+  <div>
+    <label for="description">Description:</label>
+    <textarea id="description" formControlName="description"></textarea>
+  </div>
+  <button type="submit">Submit</button>
+</form>

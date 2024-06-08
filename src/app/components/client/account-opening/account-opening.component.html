@@ -90,9 +90,9 @@
             name="accountType"
             required
           >
-            <mat-option value="hssab1">Hssab 1 - Plafond : 200 DH</mat-option>
-            <mat-option value="hssab2">Hssab 2 - Plafond : 2000 DH</mat-option>
-            <mat-option value="hssab3">Hssab 3 - Plafond : 2000 DH</mat-option>
+            <mat-option value="0">Hssab 1 - Plafond : 200 DH</mat-option>
+            <mat-option value="1">Hssab 2 - Plafond : 2000 DH</mat-option>
+            <mat-option value="2">Hssab 3 - Plafond : 2000 DH</mat-option>
           </mat-select>
         </mat-form-field>
         <div class="button-row">
@@ -127,6 +127,17 @@
               required
             />
           </mat-form-field>
+          <mat-form-field color="primary" appearance="outline" class="form-field">
+            <mat-label>Cin</mat-label>
+            <input
+              matInput
+              type="text"
+              id="cin"
+              [(ngModel)]="model.cin"
+              name="cin"
+              required
+            />
+          </mat-form-field>
         </div>
         <div class="button-row">
           <button mat-button matStepperPrevious>Précédent</button>
@@ -143,7 +154,7 @@
             <mat-label>Téléphone</mat-label>
             <input
               matInput
-              type="number"
+              type="text"
               id="phone"
               [(ngModel)]="model.phone"
               name="phone"

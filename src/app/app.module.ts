@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccountOpeningComponent } from './components/client/account-opening/account-opening.component';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegistrationSuccessComponent } from './components/client/registration-success/registration-success.component';
@@ -26,16 +26,31 @@ import {MatCardModule} from "@angular/material/card";
 import { QRCodeModule } from 'angularx-qrcode';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
+import { ClientHomepageComponent } from './components/client/client-homepage/client-homepage.component';
+import {RouterLink, RouterOutlet} from "@angular/router";
+import { DynamicFormComponent } from './components/client/dynamic-form/dynamic-form.component';
+import {FactureFormComponent} from "./components/client/facture-form/facture-form.component";
+import { TransactionHistoryComponent } from './components/client/transaction-history/transaction-history.component';
+import {CommonModule, DatePipe} from "@angular/common";
+import {QrCodeScannerComponent} from "./components/client/qr-code-scanner/qr-code-scanner.component";
+import {TransferComponent} from "./components/client/transfer/transfer.component";
+
 @NgModule({
   declarations: [
     AppComponent,
     AccountOpeningComponent,
-    RegistrationSuccessComponent,
     LoginComponent,
-    ChangePasswordComponent,
     HeaderComponent,
     SidebarComponent,
     ProfileComponent,
+    ClientHomepageComponent,
+    DynamicFormComponent,
+    FactureFormComponent,
+    TransactionHistoryComponent,
+    RegistrationSuccessComponent,
+    ChangePasswordComponent,
+    QrCodeScannerComponent,
+    TransferComponent
   ],
   imports: [
     BrowserModule,
@@ -55,9 +70,18 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     MatStepperModule,
     MatCardModule,
     QRCodeModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    BrowserModule,
+    RouterLink,
+    HttpClientModule,
+    RouterOutlet,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    CommonModule,
+    NgbModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

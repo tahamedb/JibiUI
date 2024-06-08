@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ClientAccountService } from 'src/app/services/client-account.service';
-import {UserSessionService} from "../../../services/user-session/user-session.service";
+import { ClientAccountService } from 'src/app/Service/client-account.service';
+import {UserSessionService} from "../../../Service/user-session/user-session.service";
 
 @Component({
   selector: 'app-login',
@@ -9,24 +9,29 @@ import {UserSessionService} from "../../../services/user-session/user-session.se
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  loginModel = {
-    phoneNumber: '',
+  loginModel: any = {
+    phone: '',
     password: ''
   };
+
   constructor(
     private router: Router,
     private clientAccountService: ClientAccountService,
-  private userSessionService: UserSessionService
+    private userSessionService: UserSessionService
+  ) {}
 
-) {}
   onLogin() {
     this.clientAccountService.login(this.loginModel).subscribe(
       (response: any) => {
-        this.userSessionService.setPhoneNumber(this.loginModel.phoneNumber);
+        console.log('Login response:', response);
+
+        this.userSessionService.setPhoneNumber(this.loginModel.phone);
+        this.userSessionService.setClient(response.client);
         if (response.isFirstTime) {
-          this.router.navigate(['/change-password']); // Change the route here
+          this.router.navigate(['/change-password']);
         } else {
-          this.router.navigate(['/dashboard']); // Redirect to dashboard or another appropriate page
+          // Handle regular login flow (redirect to dashboard, etc.)
+          this.router.navigate(['/homepage']);
         }
       },
       (error: any) => {

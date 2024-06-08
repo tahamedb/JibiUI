@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ClientAccountService } from 'src/app/services/client-account.service';
-import { UserSessionService } from 'src/app/services/user-session/user-session.service'; // Adjust the import path as necessary
+import { ClientAccountService } from 'src/app/Service/client-account.service';
+import { UserSessionService } from 'src/app/Service/user-session/user-session.service';
+import {Observable} from "rxjs"; // Adjust the import path as necessary
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +12,7 @@ export class ProfileComponent implements OnInit {
   profile: any;
   qrCodeUrl: string = '';
   phoneNumber!: string | null
-  isLoading = true; // Add a loading indicator
+  isLoading = true;
 
   constructor(
     private clientAccountService: ClientAccountService,
@@ -21,22 +22,16 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.phoneNumber = this.userSessionService.getPhoneNumber();
     if (this.phoneNumber) {
-      this.clientAccountService.getProfile(this.phoneNumber).subscribe(
-        (data: any) => {
+      const data=this.userSessionService.getUserData()
           this.profile = data;
-          this.qrCodeUrl = this.generateQrCodeUrl(this.profile.phoneNumber);
-          this.isLoading = false;
-        },
-        (error: any) => {
-          console.error('Error fetching profile data', error);
-          this.isLoading = false;
-        }
-      );
+          this.qrCodeUrl = this.generateQrCodeUrl(this.profile.phone);
+
     } else {
       this.isLoading = false;
     }
   }
+
   generateQrCodeUrl(receiverId: string): string {
-    return `${window.location.origin}/payer/${receiverId}`;
+    return `{"phone":"${{receiverId}}"}`;
   }
 }
