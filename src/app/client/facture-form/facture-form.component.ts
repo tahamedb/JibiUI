@@ -22,7 +22,7 @@ export class FactureFormComponent implements OnInit {
   generatedOtp: string='';
   message: string='';
   factureid: string='';
-  clientid: number=1;
+  clientid: number | undefined=this.userSessionService.getUserData()?.id;
 
   constructor(private userSessionService : UserSessionService   ,private router: Router, private factureService: FactureService, private otpService: OtpService) {
     const navigation = this.router.getCurrentNavigation();
@@ -79,16 +79,18 @@ export class FactureFormComponent implements OnInit {
     this.otpService.generateOtp(this.phoneNumber).subscribe(response => {
       // Store the generated OTP message
       this.generatedOtp = response;
+      console.log("response is "+this.generatedOtp);
       // Clear any previous message
       this.message = '';
     });
   }
 
   validateOtp() {
-    this.payFacture();
+    console.log('Validating OTP' + "generatedOtp" + this.generatedOtp + ' with ' + this.otpCode);
     // Check if user input matches the generated OTP
-    if (this.otpCode === this.generatedOtp) {
+    if (this.otpCode == this.generatedOtp) {
       // Proceed with payment processing if OTP is valid
+      this.payFacture();
     } else {
       // Display an error message if OTP is invalid
       this.message = 'Invalid OTP. Please try again.';

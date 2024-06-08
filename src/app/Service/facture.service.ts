@@ -42,7 +42,8 @@ export class FactureService {
 
     return parseFloat(result.toFixed(2));
   }
-  payerFacture(factureId: string, clientId: number): Observable<any> {
+
+  payerFacture(factureId: string, clientId: number | undefined): Observable<any> {
     const url = `${this.apiUrl}/api/factures/payer?factureId=${factureId}&clientId=${clientId}`;
     return this.http.post(url, null, { responseType: 'text' });
   }

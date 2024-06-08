@@ -23,9 +23,7 @@ export class TransactionHistoryComponent implements OnInit {
   }
 
   fetchTransactions(): void {
-    const clientId = 123;
-    const clientidTOImplement =this.userAccountService.phoneNumber; // Replace with actual client ID from authentication
-
+    const clientId = this.userAccountService.getUserData()?.id;
     this.transactionService.getTransactionsByClientId(clientId).subscribe(transactions => {
       this.transactions = transactions;
       this.totalPages = Math.ceil(this.transactions.length / this.pageSize);

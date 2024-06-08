@@ -33,6 +33,6 @@ export class LoginComponent {
         console.error('Login error', error);
       }
     );
-    console.log(this.loginModel);
+    console.log(this.userSessionService.getUserData());
   }
 }
