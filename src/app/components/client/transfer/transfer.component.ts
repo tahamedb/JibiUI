@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { TransferService } from 'src/app/Service/transfer.service';
+import {UserSessionService} from "../../../Service/user-session/user-session.service";
 
 @Component({
   selector: 'app-transfer',
@@ -12,11 +13,13 @@ import { TransferService } from 'src/app/Service/transfer.service';
 export class TransferComponent implements OnInit {
   transferForm: FormGroup;
   reciever!: string;  // Non-null assertion operator used here
+  sender!: string | null;  // Non-null assertion operator used here
 
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private transferService: TransferService
+    private transferService: TransferService,
+    private userSessionService : UserSessionService
   ) {
     this.transferForm = this.fb.group({
       reciever: ['', Validators.required],
@@ -26,6 +29,7 @@ export class TransferComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.sender = this.userSessionService.getPhoneNumber();
     this.route.queryParams.subscribe(params => {
       this.reciever = params['reciever'] || '';
       if (this.reciever) {
@@ -37,7 +41,7 @@ export class TransferComponent implements OnInit {
   onSubmit(): void {
     if (this.transferForm.valid) {
       const { amount, reciever } = this.transferForm.value;
-      const senderId = '000'; // Replace with the actual senderId
+      const senderId = this.sender || ""; // Replace with the actual senderId
 
       this.transferService.transfer(amount, senderId , reciever).subscribe(
         (        response: any) => {
