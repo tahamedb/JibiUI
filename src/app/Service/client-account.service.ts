@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {catchError, Observable} from 'rxjs';
+import {CreanceFormDTO} from "../models/creancieForm.model";
 
 @Injectable({
   providedIn: 'root',
@@ -37,4 +38,10 @@ export class ClientAccountService {
 
 
   }
+  getBalance(phone: any): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    console.log("chi haja");
+    return this.http.get<any>(`${this.apiUrl}/getbalance?phoneNumber=${phone}`);
+  }
+
 }

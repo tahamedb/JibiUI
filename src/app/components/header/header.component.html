@@ -7,12 +7,11 @@
   <span class="spacer"></span>
 
   <div class="account-info">
-    <span class="account-name">Hello, accountName </span>
+    <span class="account-name">Hello, {{username}} </span>
     <span class="separator"></span>
     <div class="balance-info">
       <span class="balance-label">Balance:</span>
-      <span class="account-balance"> 100 | mad </span>
-    </div>
+      <span>{{  balance !== null ? balance : 'Loading...' }}</span>    </div>
   </div>
 
   <button mat-icon-button>

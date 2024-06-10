@@ -36,6 +36,7 @@ import {QrCodeScannerComponent} from "./components/client/qr-code-scanner/qr-cod
 import {TransferComponent} from "./components/client/transfer/transfer.component";
 import { HomepageComponent } from './components/homepage/homepage.component';
 import {NgxTypedJsModule} from 'ngx-typed-js';
+import { CreditCardComponent } from './components/credit-card/credit-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +53,8 @@ import {NgxTypedJsModule} from 'ngx-typed-js';
     ChangePasswordComponent,
     QrCodeScannerComponent,
     TransferComponent,
-    HomepageComponent
+    HomepageComponent,
+    CreditCardComponent
   ],
   imports: [
     BrowserModule,

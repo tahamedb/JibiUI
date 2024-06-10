@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClientAccountService } from 'src/app/Service/client-account.service';
 import {UserSessionService} from "../../../Service/user-session/user-session.service";
+import {resetParseTemplateAsSourceFileForTest} from "@angular/compiler-cli/src/ngtsc/typecheck/diagnostics";
 
 @Component({
   selector: 'app-login',
@@ -21,6 +22,7 @@ export class LoginComponent {
   ) {}
 
   onLogin() {
+console.log(this.loginModel.phone)
     this.clientAccountService.login(this.loginModel).subscribe(
       (response: any) => {
         console.log('Login response:', response);

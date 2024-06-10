@@ -12,6 +12,7 @@ import {TransactionHistoryComponent} from "./components/client/transaction-histo
 import {TransferComponent} from "./components/client/transfer/transfer.component";
 import {QrCodeScannerComponent} from "./components/client/qr-code-scanner/qr-code-scanner.component";
 import {HomepageComponent} from "./components/homepage/homepage.component";
+import {CreditCardComponent} from "./components/credit-card/credit-card.component";
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'homepage',
     component: ClientHomepageComponent,
+  },
+  {
+    path: 'credit',
+    component: CreditCardComponent,
   },
   {
     path: 'creance/:id/:type',

@@ -1,43 +1,62 @@
 <style>
   .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    /*justify-content: center;*/
+    /*align-items: center;*/
     height: 100%;
-    background: linear-gradient(135deg, #7f7fd5, #86a8e7, #91eae4);
+    /*background: linear-gradient(135deg, #7f7fd5, #86a8e7, #91eae4);*/
   }
 
-  .login-card {
-    max-width: 500px;
+  .login-wrapper {
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /*max-width: 1000px;*/
     width: 100%;
-    padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    background-color: rgba(255, 255, 255, 0.8);
+    height: 100%;
+    /*padding: 40px;*/
+    /*border-radius: 16px;*/
+    /*box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);*/
+    /*background-color: beige;*/
     backdrop-filter: blur(10px);
   }
 
+  .login-card {
+    max-width: 400px;
+    width: 100%;
+    padding: 40px;
+    border-radius: 16px;
+    background-color: rgba(22, 77, 84, 0.98);
+    backdrop-filter: blur(10px);
+
+    /*border: solid ;*/
+    /*border-color: #e78d43;*/
+
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+  }
+
   .title {
-    font-size: 36px;
+    font-size: 24px;
     font-weight: 600;
-    margin-bottom: 40px;
-    color: #333333;
+    margin-bottom: 30px;
+    color: #ffffff;
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
   }
 
   .form-field {
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 
   .login-button {
     width: 100%;
-    height: 56px;
-    font-size: 18px;
+    height: 48px;
+    font-size: 16px;
     font-weight: 600;
-    border-radius: 28px;
+    border-radius: 24px;
     background-color: #ff6b6b;
     color: #ffffff;
     transition: background-color 0.3s ease, transform 0.3s ease;
@@ -52,45 +71,49 @@
 </style>
 
 <div class="login-container">
-  <mat-card class="login-card">
-    <mat-card-title class="title">Connexion au compte client</mat-card-title>
-    <mat-card-content>
-      <form (ngSubmit)="onLogin()" #loginForm="ngForm">
-        <mat-form-field class="form-field" appearance="outline">
-          <mat-label>Phone number</mat-label>
-          <input
-            matInput
-            type="text"
-            id="phone"
-            [(ngModel)]="loginModel.phone"
-            name="phone"
-            required
-          />
-          <mat-error>Please enter a valid phone number</mat-error>
-        </mat-form-field>
+  <div class="login-wrapper">
+    <mat-card class="login-card">
+      <mat-card-title class="title">Connexion au compte client</mat-card-title>
+      <mat-card-content>
+        <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Phone number</mat-label>
+            <input
+              matInput
+              type="text"
+              id="phone"
+              [(ngModel)]="loginModel.phone"
+              name="phone"
+              required
+            />
+            <mat-error>Please enter a valid phone number</mat-error>
+          </mat-form-field>
 
-        <mat-form-field class="form-field" appearance="outline">
-          <mat-label>Mot de passe</mat-label>
-          <input
-            matInput
-            type="password"
-            id="password"
-            [(ngModel)]="loginModel.password"
-            name="password"
-            required
-          />
-          <mat-error>Please enter your password</mat-error>
-        </mat-form-field>
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>Mot de passe</mat-label>
+            <input
+              matInput
+              type="password"
+              id="password"
+              [(ngModel)]="loginModel.password"
+              name="password"
+              required
+            />
+            <mat-error>Please enter your password</mat-error>
+          </mat-form-field>
 
-        <button
-          mat-raised-button
-          color="primary"
-          type="submit"
-          class="login-button"
-        >
-          Se connecter
-        </button>
-      </form>
-    </mat-card-content>
-  </mat-card>
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            class="login-button"
+          >
+            Se connecter
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+
+    <app-credit-card></app-credit-card>
+  </div>
 </div>

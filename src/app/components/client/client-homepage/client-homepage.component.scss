@@ -1,7 +1,7 @@
 .container {
   margin: 0 auto;
   padding: 40px;
-  background-color: #ffffff;
+  background-color: rgba(217, 217, 210, 0.26);
   border-radius: 16px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
@@ -13,7 +13,6 @@
 .button-group {
   display: flex;
 }
-
 .button-group button {
   padding: 12px 24px; /* Increase the padding to make the buttons larger */
   font-size: 16px; /* Increase the font size for better readability */
@@ -40,9 +39,10 @@
 .creditor-card {
   margin-bottom: 1.5rem;
   border-radius: 8px;
-  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 4px 6px rgba(194, 96, 96, 0.1);
   transition: box-shadow 0.3s ease;
-  background-color: #f5f5dc;
+  background-color: #fdfbf9;
+
 }
 
 .creditor-card:hover {
@@ -54,6 +54,8 @@
   justify-content: center;
   align-items: center;
   padding: 1rem;
+  border-right: solid;
+  border-color: #80808038;
 }
 
 .logo {
