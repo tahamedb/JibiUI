@@ -1,0 +1,93 @@
+<!-- home.component.html -->
+<header>
+  <nav>
+<!--    <img src="logo.png" alt="Logo">-->
+    <ul>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button mat-raised-button color="primary">Sign In</button>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-image">
+      <img [src]="'/assets/images/banner.png'" alt="Image">
+    </div>
+    <div class="hero-content">
+      <h1>Simplify Your Payments</h1>
+      <p>Effortlessly pay invoices and make transfers with our secure and user-friendly platform.</p>
+      <div class="typed-text">
+        <ngx-typed-js [strings]="['Pay Invoices', 'Transfer Money', 'Track Expenses']" [typeSpeed]="100" [loop]="true">
+          <span class="typing"></span>
+        </ngx-typed-js>
+      </div>
+      <button mat-raised-button color="accent">Get Started</button>
+    </div>
+  </section>
+
+  <section id="features">
+    <h2>Key Features</h2>
+    <div class="feature-cards">
+      <mat-card>
+        <img mat-card-image src="secure-payments.png" alt="Secure Payments">
+        <mat-card-content>
+          <h3>Secure Payments</h3>
+          <p>Our platform ensures the highest level of security for all your transactions.</p>
+        </mat-card-content>
+      </mat-card>
+      <mat-card>
+        <img mat-card-image src="easy-invoicing.png" alt="Easy Invoicing">
+        <mat-card-content>
+          <h3>Easy Invoicing</h3>
+          <p>Create, send, and manage invoices effortlessly with our intuitive interface.</p>
+        </mat-card-content>
+      </mat-card>
+      <mat-card>
+        <img mat-card-image src="expense-tracking.png" alt="Expense Tracking">
+        <mat-card-content>
+          <h3>Expense Tracking</h3>
+          <p>Keep track of your expenses and generate insightful reports for better financial management.</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+
+  <section id="how-it-works">
+    <h2>How It Works</h2>
+    <mat-horizontal-stepper>
+      <mat-step label="Sign Up">
+        <p>Create an account with a few simple steps.</p>
+      </mat-step>
+      <mat-step label="Connect Accounts">
+        <p>Link your bank accounts or payment methods securely.</p>
+      </mat-step>
+      <mat-step label="Start Transacting">
+        <p>Begin paying invoices and making transfers instantly.</p>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </section>
+
+  <section id="contact">
+    <h2>Get In Touch</h2>
+    <p>Have questions or need assistance? We're here to help!</p>
+    <form>
+      <mat-form-field>
+        <input matInput placeholder="Name" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Email" required>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Message" required></textarea>
+      </mat-form-field>
+      <button mat-raised-button color="primary">Send Message</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2024 Your Company. All rights reserved.</p>
+</footer>
