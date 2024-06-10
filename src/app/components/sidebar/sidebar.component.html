@@ -3,6 +3,7 @@
     /*background: linear-gradient(135deg, #7f7fd5, #86a8e7, #91eae4);*/
     padding: 20px;
     border-radius: 16px;
+
     /*box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);*/
   }
 
@@ -56,7 +57,7 @@
     padding: 16px;
     border-radius: 8px;
     text-decoration: none;
-    color: #090707;
+    background-color: rgb(37, 37, 38);
     /*background-color: rgba(94, 23, 6, 0.99);*/
     transition: background-color 0.3s ease, transform 0.3s ease;
   }
@@ -79,7 +80,7 @@
 </style>
 
 <mat-nav-list class="sidebar">
-  <a mat-list-item routerLink="/dashboard" routerLinkActive="active" class="menu-item">
+  <a mat-list-item routerLink="/homepage" routerLinkActive="active" class="menu-item">
     <mat-icon class="menu-icon">dashboard</mat-icon>
     <span class="menu-text">Dashboard</span>
   </a>
@@ -87,7 +88,7 @@
     <mat-icon class="menu-icon">person</mat-icon>
     <span class="menu-text">Profile</span>
   </a>
-  <a mat-list-item routerLink="/pwallet" routerLinkActive="active" class="menu-item">
+  <a mat-list-item routerLink="/p-wallet" routerLinkActive="active" class="menu-item">
     <mat-icon class="menu-icon">wallet</mat-icon>
     <span class="menu-text">P-Wallet</span>
   </a>

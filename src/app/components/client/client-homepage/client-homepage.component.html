@@ -1,33 +1,52 @@
-<div class="bg-beige min-h-screen px-4 py-8">
-  <div class="container mx-auto">
-    <h1 class="text-3xl font-bold mb-8">Paiement de facture</h1>
+<div class="container">
+  <div class="content">
+    <h1>Paiement de facture</h1>
 
-    <div class="flex mb-8">
-      <button class="px-4 py-2 bg-gray-200 font-semibold border border-gray-300 rounded-l-md " [routerLink]="['/homepage']" >Liste des créanciers</button>
-      <button class="px-4 py-2 bg-gray-200 font-semibold border border-gray-300 border-l-0 rounded-r-md" [routerLink]="['/historique']" >Historique</button>
+    <div class="button-group mb-4">
+      <button mat-raised-button color="primary" [routerLink]="['/homepage']" class="rounded-left">
+        Liste des créanciers
+      </button>
+      <button mat-raised-button color="primary" [routerLink]="['/historique']" class="rounded-right">
+        Historique
+      </button>
     </div>
 
-    <div class="mb-8">
-      <label for="category" class="block font-medium mb-2">Toutes les catégories</label>
-      <select id="category" class="w-full border border-gray-700 rounded-md" [(ngModel)]="selectedCategory" (ngModelChange)="filterCreditors()">
-        <option value="all">Toutes les catégories</option>
-        <option value="OPERATEUR">Operateur</option>
-        <option value="UTILITY">Utility</option>
-        <option value="ASSOCIATION">Association</option>
-      </select>
+    <div class="mb-4">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Toutes les catégories</mat-label>
+        <mat-select [(ngModel)]="selectedCategory" (ngModelChange)="filterCreditors()">
+          <mat-option value="all">Toutes les catégories</mat-option>
+          <mat-option value="OPERATEUR">Operateur</mat-option>
+          <mat-option value="UTILITY">Utility</mat-option>
+          <mat-option value="ASSOCIATION">Association</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="bg-white rounded-lg shadow-md flex border border-gray-300" *ngFor="let creditor of filteredCreditors; let i = index">
-        <div class="w-1/3 p-4 flex items-center justify-center border-r border-gray-300">
-          <img [src]=creditor.logo alt="{{ creditor.name }}" [class.h-40]="i < 2" [class.w-full]="i >= 2" class="object-fit: cover; object-position: center;">
-        </div>
-        <div class="w-2/3 p-6">
-          <h2 class="text-xl font-semibold mb-4 creditor-name">{{ creditor.name | uppercase }}</h2>
-          <div *ngFor="let service of creditor.creances">
-            <p class="text-gray-700 font-coco-gothic service-name">→ <a [routerLink]="['/creance', service.id,service.creancetype]" >{{ service.name | uppercase }}</a></p>
-          </div>
-        </div>
+    <div class="row">
+      <div class="col-md-6" *ngFor="let creditor of filteredCreditors; let i = index">
+        <mat-card class="creditor-card">
+          <mat-card-content>
+            <div class="row align-items-center">
+              <div class="col-md-3 logo-container">
+                <img [src]="creditor.logo" alt="{{ creditor.name }}" class="logo" [class.large]="i < 2">
+              </div>
+              <div class="col-md-9">
+                <div class="creditor-details">
+                  <h2 class="creditor-name">{{ creditor.name | uppercase }}</h2>
+                  <div class="service-list">
+                    <div *ngFor="let service of creditor.creances" class="service-item">
+                      <mat-icon class="service-icon">arrow_right</mat-icon>
+                      <a [routerLink]="['/creance', service.id, service.creancetype]" class="service-link">
+                        {{ service.name | uppercase }}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
       </div>
     </div>
   </div>

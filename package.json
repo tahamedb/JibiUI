@@ -25,6 +25,7 @@
     "angularx-qrcode": "^17.0.1",
     "bootstrap": "^5.3.3",
     "jquery": "^3.7.1",
+    "ngx-typed-js": "^2.1.1",
     "rxjs": "~7.8.0",
     "tailwind": "^4.0.0",
     "tslib": "^2.3.0",

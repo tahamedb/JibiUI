@@ -11,6 +11,7 @@ import {FactureFormComponent} from "./components/client/facture-form/facture-for
 import {TransactionHistoryComponent} from "./components/client/transaction-history/transaction-history.component";
 import {TransferComponent} from "./components/client/transfer/transfer.component";
 import {QrCodeScannerComponent} from "./components/client/qr-code-scanner/qr-code-scanner.component";
+import {HomepageComponent} from "./components/homepage/homepage.component";
 
 const routes: Routes = [
   {
@@ -40,6 +41,10 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'transfert', component: TransferComponent },
   { path: 'p-wallet', component: QrCodeScannerComponent },
+  {
+    path: 'acceuil',
+    component: HomepageComponent,
+  },
 
 ];
 

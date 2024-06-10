@@ -1,56 +1,46 @@
 <!-- transaction-history.component.html -->
-<div class="bg-beige min-h-screen px-4 py-8">
-  <div class="container mx-auto">
-    <div class="flex mb-8">
-      <button class="px-4 py-2 bg-gray-200 font-semibold border border-gray-300 rounded-l-md" [routerLink]="['/homepage']">Liste des créanciers</button>
-      <button class="px-4 py-2 bg-gray-200 font-semibold border border-gray-300 border-l-0 rounded-r-md" [routerLink]="['/historique']">Historique</button>
-    </div>
-    <h1 class="text-3xl font-bold mb-8">Historique des Transactions</h1>
+<div class="container">
+  <div class="Content">
+    <h1>Historique des Transactions</h1>
 
-    <div class="grid grid-cols-1 gap-6">
-      <div class="bg-white rounded-lg shadow-md flex border border-gray-300" *ngFor="let transaction of paginatedTransactions">
-        <div class="w-full p-6 flex justify-between items-center" [ngClass]="{'bg-green-100': transaction.type === 'ENTREE', 'bg-red-100': transaction.type === 'SORTIE'}">
-          <div>
-            <h2 class="text-xl font-semibold mb-2">{{ transaction.libelle }}</h2>
-            <p class="text-gray-700">Montant: <span [ngClass]="{'text-green-500': transaction.type === 'ENTREE', 'text-red-500': transaction.type === 'SORTIE'}">{{ transaction.montant }} DH</span></p>
-            <p class="text-gray-700">Date: {{ transaction.date | date: 'short' }}</p>
-            <p class="text-gray-700">Bénéficiaire: {{ transaction.beneficaire }}</p>
-          </div>
-          <div>
-            <button class="px-3 py-1 bg-yellow-500 text-white font-semibold rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500">Détails</button>
-          </div>
-        </div>
-      </div>
+    <div class="button-group">
+      <button mat-raised-button color="primary" [routerLink]="['/homepage']" class="rounded-left">
+        Liste des créanciers
+      </button>
+      <button mat-raised-button color="primary" [routerLink]="['/historique']" class="rounded-right">
+        Historique
+      </button>
     </div>
-  </div>
+
+    <div class="transaction-list">
+      <mat-card class="transaction-card" *ngFor="let transaction of paginatedTransactions">
+        <mat-card-content class="transaction-content" [ngClass]="{'bg-green': transaction.type === 'ENTREE', 'bg-red': transaction.type === 'SORTIE'}">
+          <div class="transaction-details">
+            <h2 class="mat-h2">{{ transaction.libelle }}</h2>
+            <p class="montant">Montant: <span [ngClass]="{'green-text': transaction.type === 'ENTREE', 'red-text': transaction.type === 'SORTIE'}">{{ transaction.montant }} DH</span></p>
+            <p class="date">Date: {{ transaction.date | date: 'short' }}</p>
+            <p class="beneficiaire">Bénéficiaire: {{ transaction.beneficaire }}</p>
+          </div>
+          <div class="transaction-actions">
+            <button mat-raised-button color="accent">Détails</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  <div>
+
   <!-- Pagination -->
-  <div class="flex justify-center mt-8">
-    <button
-      class="px-4 py-2 mx-1 font-semibold rounded-md bg-gray-200 text-gray-800 hover:bg-orange-400 "
-
-      [disabled]="currentPage === 1"
-      (click)="onPageChange(currentPage - 1)"
-      [class.grayed-out-white]="currentPage === 1">
+  <div class="pagination">
+    <button mat-button [disabled]="currentPage === 1" (click)="onPageChange(currentPage - 1)" [class.disabled]="currentPage === 1">
       Previous
     </button>
     <ng-container *ngFor="let page of pages">
-      <button
-        class="px-4 py-2 mx-1 font-semibold rounded-md bg-gray-200 text-gray-800 hover:bg-orange-400 grayed-out-white {{ currentPage === page ? 'bg-orange-400' : '' }}"
-
-        [class.text-white]="currentPage === page"
-        [class.bg-yellow-400]="currentPage === page"
-        (click)="onPageChange(page)">
+      <button mat-button [class.active]="currentPage === page" (click)="onPageChange(page)">
         {{ page }}
       </button>
     </ng-container>
-    <button
-      class="px-4 py-2 mx-1 font-semibold rounded-md bg-gray-200 text-gray-800 hover:bg-orange-400 grayed-out-white"
-      [disabled]="currentPage === totalPages"
-      (click)="onPageChange(currentPage + 1)"
-      [class.grayed-out-white]="currentPage === totalPages">
+    <button mat-button [disabled]="currentPage === totalPages" (click)="onPageChange(currentPage + 1)" [class.disabled]="currentPage === totalPages">
       Next
     </button>
   </div>
-
-
 </div>

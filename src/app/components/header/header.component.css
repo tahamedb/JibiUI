@@ -3,18 +3,59 @@
 }
 
 mat-toolbar {
+  padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: rgb(37, 37, 38);
-  color: white
-}
-mat-list-item{
-  display: flex;
-  margin:10px;
-  padding:40px;
+  color: white;
 }
 
-  button {
+mat-list-item {
+  display: flex;
+  margin: 10px;
+  padding: 40px;
+}
+
+button {
+  color: #e78d43;
+}
+
+span {
+  margin-left: 25px;
+}
+
+
+
+.account-name {
+  font-weight: normal;
+  font-size:17px
+}
+
+.separator {
+  width: 1px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+  margin: 0 20px 0 20px;
+}
+
+.balance-info {
+  display: flex;
+  align-items: center;
+}
+
+.balance-label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-right: 5px;
+}
+
+.account-balance account-info {
+  font-size: 16px;
+  color: #e78d43;
+}
+account-info {
+
+  font-size: 16px;
   color: #e78d43;
 }

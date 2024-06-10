@@ -6,7 +6,7 @@ import {UserSessionService} from "../../../Service/user-session/user-session.ser
 @Component({
   selector: 'app-transaction-history',
   templateUrl: './transaction-history.component.html',
-  styleUrls: ['./transaction-history.component.css']
+  styleUrls: ['./transaction-history.component.scss']
 })
 export class TransactionHistoryComponent implements OnInit {
   transactions: Transaction[] = [];

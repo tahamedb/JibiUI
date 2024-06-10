@@ -1,9 +1,12 @@
+<app-header></app-header>
+
 <mat-sidenav-container class="example-container">
-  <mat-sidenav #sidenav mode="side" opened="true" class="sidenav">
+  <mat-sidenav *ngIf="!isHomePage()" #sidenav mode="side" opened="true" class="sidenav">
     <app-sidebar></app-sidebar>
   </mat-sidenav>
   <mat-sidenav-content>
-    <app-header></app-header>
+    <ng-container *ngIf="!isHomePage()">
+    </ng-container>
     <div class="content">
       <router-outlet></router-outlet>
     </div>

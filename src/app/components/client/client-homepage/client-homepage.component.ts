@@ -6,7 +6,7 @@ import {Creancier} from "../../../models/creancier.model";
 @Component({
   selector: 'app-payment',
   templateUrl: './client-homepage.component.html',
-  styleUrls: ['./client-homepage.component.css']
+  styleUrls: ['./client-homepage.component.scss']
 })
 export class ClientHomepageComponent implements OnInit {
   creditors: Creancier[] = [];

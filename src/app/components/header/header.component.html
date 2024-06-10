@@ -1,12 +1,20 @@
-<mat-toolbar color="red">
+<mat-toolbar color="primary">
   <span>JIBI</span>
   <button mat-icon-button>
-    <mat-icon>payments</mat-icon>
+    <mat-icon class="paymentIcon">payments</mat-icon>
   </button>
+
   <span class="spacer"></span>
-  <button mat-icon-button>
-    <mat-icon>contact_support</mat-icon>
-  </button>
+
+  <div class="account-info">
+    <span class="account-name">Hello, accountName </span>
+    <span class="separator"></span>
+    <div class="balance-info">
+      <span class="balance-label">Balance:</span>
+      <span class="account-balance"> 100 | mad </span>
+    </div>
+  </div>
+
   <button mat-icon-button>
     <mat-icon>help_outline</mat-icon>
   </button>

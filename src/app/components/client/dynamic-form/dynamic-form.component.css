@@ -17,7 +17,7 @@
 /* Coco Gothic font */
 @font-face {
   font-family: 'Coco Gothic';
-  src: url('./assets/fonts/coco-gothic-family/coco-gothic.bold.ttf') format('truetype');
+  src: url('/assets/fonts/coco-gothic-family/coco-gothic.bold.ttf') format('truetype');
 }
 .font-coco-gothic {
   font-family: 'Coco Gothic', sans-serif;

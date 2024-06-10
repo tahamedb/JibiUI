@@ -1,6 +1,6 @@
 <style>
   .container {
-    max-width: 800px;
+    /*max-width: 800px;*/
     margin: 0 auto;
     padding: 40px;
     background-color: #ffffff;
@@ -26,6 +26,7 @@
   .form-row {
     display: flex;
     gap: 20px;
+    padding-top:10px
   }
 
   .form-row .form-field {
@@ -82,6 +83,8 @@
     <form (ngSubmit)="onSubmit()" #accountForm="ngForm">
       <mat-step [stepControl]="accountForm.form.controls['accountType']">
         <ng-template matStepLabel>Selectionner un produit</ng-template>
+        <div class="form-row">
+
         <mat-form-field color="primary" appearance="outline" class="form-field">
           <mat-label>Selectionner un produit</mat-label>
           <mat-select
@@ -94,7 +97,10 @@
             <mat-option value="1">Hssab 2 - Plafond : 2000 DH</mat-option>
             <mat-option value="2">Hssab 3 - Plafond : 2000 DH</mat-option>
           </mat-select>
+
         </mat-form-field>
+        </div>
+
         <div class="button-row">
           <div></div>
           <button mat-raised-button color="accent" matStepperNext>

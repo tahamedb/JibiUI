@@ -31,10 +31,11 @@ import {RouterLink, RouterOutlet} from "@angular/router";
 import { DynamicFormComponent } from './components/client/dynamic-form/dynamic-form.component';
 import {FactureFormComponent} from "./components/client/facture-form/facture-form.component";
 import { TransactionHistoryComponent } from './components/client/transaction-history/transaction-history.component';
-import {CommonModule, DatePipe} from "@angular/common";
+import {CommonModule, DatePipe, NgOptimizedImage} from "@angular/common";
 import {QrCodeScannerComponent} from "./components/client/qr-code-scanner/qr-code-scanner.component";
 import {TransferComponent} from "./components/client/transfer/transfer.component";
-
+import { HomepageComponent } from './components/homepage/homepage.component';
+import {NgxTypedJsModule} from 'ngx-typed-js';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +51,8 @@ import {TransferComponent} from "./components/client/transfer/transfer.component
     RegistrationSuccessComponent,
     ChangePasswordComponent,
     QrCodeScannerComponent,
-    TransferComponent
+    TransferComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
@@ -80,6 +82,8 @@ import {TransferComponent} from "./components/client/transfer/transfer.component
     FormsModule,
     CommonModule,
     NgbModule,
+    NgxTypedJsModule,
+    NgOptimizedImage,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],

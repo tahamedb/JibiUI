@@ -5,7 +5,7 @@ import { ClientAccountService } from '../../../Service/client-account.service';
 @Component({
   selector: 'app-account-opening',
   templateUrl: './account-opening.component.html',
-  styleUrls: ['./account-opening.component.css'],
+  styleUrls: ['./account-opening.component.scss'],
 })
 export class AccountOpeningComponent {
   model: any = {
