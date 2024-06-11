@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm install
 
 # Copy the rest of the application code to the working directory
-COPY . .
+COPY src .
 
 # Build the Angular application in production mode
 RUN npm run build --prod
