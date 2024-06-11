@@ -33,7 +33,7 @@ console.log(this.loginModel.phone)
           this.router.navigate(['/change-password']);
         } else {
           // Handle regular login flow (redirect to dashboard, etc.)
-          this.router.navigate(['/homepage']);
+          window.location.href = '/homepage';
         }
       },
       (error: any) => {

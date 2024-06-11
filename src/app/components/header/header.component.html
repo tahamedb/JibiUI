@@ -7,11 +7,13 @@
   <span class="spacer"></span>
 
   <div class="account-info">
-    <span class="account-name">Hello, {{username}} </span>
-    <span class="separator"></span>
-    <div class="balance-info">
+    <span class="account-name" *ngIf="username">Hello, {{ username }}</span>
+    <span class="separator" *ngIf="username"></span>
+    <div class="balance-info" *ngIf="username">
       <span class="balance-label">Balance:</span>
-      <span>{{  balance !== null ? balance : 'Loading...' }}</span>    </div>
+      <span *ngIf="!isLoading">{{ balance !== null ? balance : 'Error loading balance' }}</span>
+      <span *ngIf="isLoading">Loading...</span>
+    </div>
   </div>
 
   <button mat-icon-button>

@@ -33,14 +33,11 @@ export class ClientAccountService {
   changePassword(phone: string | null, currentPassword: string, newPassword: string, confirmNewPassword: string): Observable<any> {
     const body = { phone, currentPassword, newPassword,confirmNewPassword };
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
     return this.http.post(`${this.apiUrl}/change-password`, body, { headers });
-
 
   }
   getBalance(phone: any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    console.log("chi haja");
     return this.http.get<any>(`${this.apiUrl}/getbalance?phoneNumber=${phone}`);
   }
 

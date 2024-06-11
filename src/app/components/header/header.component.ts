@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientAccountService } from "../../Service/client-account.service";
-import {ClientDTO, UserSessionService} from "../../Service/user-session/user-session.service";
-import { Creancier } from "../../models/creancier.model";
+import { ClientDTO, UserSessionService } from "../../Service/user-session/user-session.service";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-header',
@@ -11,10 +11,12 @@ import { Creancier } from "../../models/creancier.model";
 export class HeaderComponent implements OnInit {
   username: string | undefined = "";
   balance: number | null = null;
+  isLoading: boolean = true;
 
   constructor(
     private userSessionService: UserSessionService,
-    private ClientAccountService: ClientAccountService
+    private clientAccountService: ClientAccountService,
+    private location : Location
   ) {}
 
   ngOnInit(): void {
@@ -22,21 +24,24 @@ export class HeaderComponent implements OnInit {
     if (userData) {
       this.username = userData.firstname;
       this.fetchBalance();
-
     }
   }
 
   fetchBalance(): void {
     const phoneNumber = this.userSessionService.getPhoneNumber();
     if (phoneNumber) {
-      this.ClientAccountService.getBalance(phoneNumber).subscribe(
+      this.clientAccountService.getBalance(phoneNumber).subscribe(
         (balance: number) => {
           this.balance = balance;
+          this.isLoading = false;
         },
         (error) => {
           console.error('Failed to load balance:', error);
+          this.isLoading = false;
         }
       );
+    } else {
+      this.isLoading = false;
     }
   }
 }
