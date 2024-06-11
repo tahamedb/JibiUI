@@ -16,16 +16,22 @@ import {OtpvalidationComponent} from "./components/agent/otpvalidation/otpvalida
 import {AuthGuard} from "./Service/authguard.service";
 import {RegistrationComponent} from "./components/agent/registration/registration.component";
 import {LoginAgentComponent} from "./components/agent/login_admin/login.component";
+import {HomepageComponent} from "./components/homepage/homepage.component";
+import {CreditCardComponent} from "./components/credit-card/credit-card.component";
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/loginAgent',
+    redirectTo: '/login',
     pathMatch: 'full'
   },
   {
     path: 'homepage',
     component: ClientHomepageComponent,
+  },
+  {
+    path: 'credit',
+    component: CreditCardComponent,
   },
   {
     path: 'creance/:id/:type',

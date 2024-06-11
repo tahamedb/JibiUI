@@ -30,18 +30,19 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { DynamicFormComponent } from './components/client/dynamic-form/dynamic-form.component';
 import { FactureFormComponent } from './components/client/facture-form/facture-form.component';
 import { TransactionHistoryComponent } from './components/client/transaction-history/transaction-history.component';
-import { CommonModule, DatePipe } from '@angular/common';
-import { QrCodeScannerComponent } from './components/client/qr-code-scanner/qr-code-scanner.component';
-import { TransferComponent } from './components/client/transfer/transfer.component';
-import { NgxTypedJsModule } from 'ngx-typed-js';
 import { JwtModule } from '@auth0/angular-jwt';
-import { NgOptimizedImage } from '@angular/common';
 import {JwtInterceptor} from "./Service/interceptor.service";
 
 export function tokenGetter() {
   return localStorage.getItem('jwt');
 }
 
+import {CommonModule, DatePipe, NgOptimizedImage} from "@angular/common";
+import {QrCodeScannerComponent} from "./components/client/qr-code-scanner/qr-code-scanner.component";
+import {TransferComponent} from "./components/client/transfer/transfer.component";
+import { HomepageComponent } from './components/homepage/homepage.component';
+import {NgxTypedJsModule} from 'ngx-typed-js';
+import { CreditCardComponent } from './components/credit-card/credit-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +59,8 @@ export function tokenGetter() {
     ChangePasswordComponent,
     QrCodeScannerComponent,
     TransferComponent,
+    HomepageComponent,
+    CreditCardComponent
   ],
   imports: [
     BrowserModule,
@@ -85,10 +88,15 @@ export function tokenGetter() {
     MatCardModule,
     QRCodeModule,
     MatProgressSpinnerModule,
+    BrowserModule,
     RouterLink,
+    HttpClientModule,
     RouterOutlet,
+    AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     CommonModule,
+    NgbModule,
     NgxTypedJsModule,
     NgOptimizedImage,
   ],

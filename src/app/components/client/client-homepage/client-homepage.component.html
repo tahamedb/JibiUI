@@ -26,7 +26,7 @@
     <div class="row">
       <div class="col-md-6" *ngFor="let creditor of filteredCreditors; let i = index">
         <mat-card class="creditor-card">
-          <mat-card-content>
+          <mat-card-content style="padding:0px">
             <div class="row align-items-center">
               <div class="col-md-3 logo-container">
                 <img [src]="creditor.logo" alt="{{ creditor.name }}" class="logo" [class.large]="i < 2">

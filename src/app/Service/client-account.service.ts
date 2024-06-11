@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {catchError, Observable} from 'rxjs';
+import {CreanceFormDTO} from "../models/creancieForm.model";
 
 @Injectable({
   providedIn: 'root',
@@ -32,9 +33,12 @@ export class ClientAccountService {
   changePassword(phone: string | null, currentPassword: string, newPassword: string, confirmNewPassword: string): Observable<any> {
     const body = { phone, currentPassword, newPassword,confirmNewPassword };
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
     return this.http.post(`${this.apiUrl}/change-password`, body, { headers });
 
-
   }
+  getBalance(phone: any): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get<any>(`${this.apiUrl}/getbalance?phoneNumber=${phone}`);
+  }
+
 }
