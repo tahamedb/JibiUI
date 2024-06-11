@@ -3,12 +3,13 @@
 @include mat.core();
 
 $primary: mat.define-palette(mat.$indigo-palette);
-$accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$accent: mat.define-palette(mat.$orange-palette, A200, A100, A400);
 $theme: mat.define-light-theme((
   color: (
     primary: $primary,
     accent: $accent,
-  ),
+
+),
   typography: mat.define-typography-config(),
 ));
 
@@ -20,4 +21,10 @@ html, body {
 
 .example-container {
   height: 100%;
+}
+
+$custom-orange: #ff9800;
+.custom-orange-button {
+  background-color: $custom-orange;
+  color: white;
 }

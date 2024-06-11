@@ -4,10 +4,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-qr-code-scanner',
-  template: `
-    <input type="file" (change)="onFileSelected($event)" accept="image/*"/>
-    <button (click)="scanQrCode()" [disabled]="!selectedFile">Scan QR Code</button>
-  `
+  templateUrl: './qr-code-scanner.component.html',
+
 })
 export class QrCodeScannerComponent {
   selectedFile: File | null = null;

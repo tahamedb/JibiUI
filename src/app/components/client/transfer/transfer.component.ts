@@ -1,9 +1,8 @@
-// transfer.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { TransferService } from 'src/app/Service/transfer.service';
-import {UserSessionService} from "../../../Service/user-session/user-session.service";
+import { UserSessionService } from "../../../Service/user-session/user-session.service";
 
 @Component({
   selector: 'app-transfer',
@@ -19,7 +18,7 @@ export class TransferComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private transferService: TransferService,
-    private userSessionService : UserSessionService
+    private userSessionService: UserSessionService
   ) {
     this.transferForm = this.fb.group({
       reciever: ['', Validators.required],
@@ -31,8 +30,8 @@ export class TransferComponent implements OnInit {
   ngOnInit(): void {
     this.sender = this.userSessionService.getPhoneNumber();
     this.route.queryParams.subscribe(params => {
-      this.reciever = params['reciever'] || '';
-      if (this.reciever) {
+      if (params['reciever']) {
+        this.reciever = decodeURIComponent(params['reciever']);
         this.transferForm.patchValue({ reciever: this.reciever });
       }
     });
@@ -43,11 +42,11 @@ export class TransferComponent implements OnInit {
       const { amount, reciever } = this.transferForm.value;
       const senderId = this.sender || ""; // Replace with the actual senderId
 
-      this.transferService.transfer(amount, senderId , reciever).subscribe(
-        (        response: any) => {
+      this.transferService.transfer(amount, senderId, reciever).subscribe(
+        (response: any) => {
           console.log('Transfer successful', response);
         },
-        (        error: any) => {
+        (error: any) => {
           console.error('Transfer failed', error);
         }
       );
