@@ -3,7 +3,7 @@
     /*max-width: 800px;*/
     margin: 0 auto;
     padding: 40px;
-    background-color: #ffffff;
+    background-color: rgba(217, 217, 210, 0.26);
     border-radius: 16px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
@@ -48,6 +48,8 @@
     border-radius: 24px;
     transition: background-color 0.3s ease, transform 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color:orange;
+    background-color:black;
   }
 
   .button-row button:hover {
@@ -58,7 +60,9 @@
   .button-row button mat-icon {
     margin-right: 8px;
   }
-
+.stepper{
+  border-radius:10px;
+}
   .submit-button {
     width: 160px;
     height: 56px;
@@ -76,10 +80,16 @@
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   }
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
 </style>
-<div class="container">
+<div class="container" >
   <h2 class="title">Ouverture d'un compte de paiement</h2>
-  <mat-vertical-stepper linear>
+  <mat-vertical-stepper linear class="stepper"  >
     <form (ngSubmit)="onSubmit()" #accountForm="ngForm">
       <mat-step [stepControl]="accountForm.form.controls['accountType']">
         <ng-template matStepLabel>Selectionner un produit</ng-template>
@@ -103,7 +113,7 @@
 
         <div class="button-row">
           <div></div>
-          <button mat-raised-button color="accent" matStepperNext>
+          <button mat-raised-button matStepperNext class="custom-orange-button">
             <mat-icon>arrow_forward</mat-icon>Suivant
           </button>
         </div>
@@ -193,4 +203,5 @@
       </mat-step>
     </form>
   </mat-vertical-stepper>
-</div>
+    </div>
+

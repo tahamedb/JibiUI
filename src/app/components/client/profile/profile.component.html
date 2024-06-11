@@ -1,48 +1,85 @@
 <style>
   .profile-container {
-    max-width: 600px;
+    max-width: 900px;
     margin: 40px auto;
-    padding: 40px;
+    margin-top:40px;
+    padding: 20px;
     border-radius: 16px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .profile-container::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 200px;
+    height: 200px;
+    background-color: #ff9800;
+    border-radius: 50%;
+    opacity: 0.2;
+    z-index: -1;
+    animation: floating 5s ease-in-out infinite;
   }
 
   .profile-header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 
   .profile-title {
-    font-size: 36px;
-    font-weight: 600;
-    color: #333333;
+    font-size: 42px;
+    font-weight: 700;
+    color: #ff5722;
     text-transform: uppercase;
     letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   }
 
   .profile-content {
-    font-size: 18px;
+    font-size: 20px;
     color: #666666;
-    margin-bottom: 20px;
+    flex: 1;
+    margin-right: 20px;
   }
 
   .profile-field {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #00000005;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+
+  .profile-field:hover {
+    background-color: #ffe0b2;
   }
 
   .profile-label {
     font-weight: bold;
     margin-right: 10px;
-    flex-basis: 120px;
+    flex-basis: 150px;
+    color: black;
   }
 
   .qr-code-container {
-    margin-top: 30px;
+    padding: 20px;
+    background-color: #fff3e0;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-shrink: 0; /* Ensure the QR code container does not shrink */
+    flex-basis: 200px; /* Set a fixed width */
+    margin-top: auto;
   }
 
   .loading-container {
@@ -57,19 +94,32 @@
   }
 
   .loading-message {
-    font-size: 18px;
+    font-size: 20px;
     color: #666666;
+    text-align: center;
+  }
+
+  @keyframes floating {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(20px, 20px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
   }
 </style>
 
 <mat-card *ngIf="profile" class="profile-container">
-  <mat-card-header class="profile-header">
-    <mat-card-title class="profile-title">Profile</mat-card-title>
-  </mat-card-header>
-  <mat-card-content class="profile-content">
+  <div class="profile-content">
+    <mat-card-header class="profile-header">
+      <mat-card-title class="profile-title">Profile</mat-card-title>
+    </mat-card-header>
     <div class="profile-field">
       <span class="profile-label">Name:</span>
-      <span>{{ profile.firstname +" "+profile.lastname}}</span>
+      <span>{{ profile.firstname + " " + profile.lastname }}</span>
     </div>
     <div class="profile-field">
       <span class="profile-label">Email:</span>
@@ -80,16 +130,11 @@
       <span>{{ profile.phone }}</span>
     </div>
     <!-- Add more fields as necessary -->
-    <div class="qr-code-container">
-      <qrcode [qrdata]="qrCodeUrl"></qrcode>
-    </div>
-  </mat-card-content>
+  </div>
+  <div class="qr-code-container">
+    <qrcode [qrdata]="qrCodeUrl"></qrcode>
+  </div>
 </mat-card>
-
-<!--<div *ngIf="isLoading" class="loading-container">-->
-<!--  <mat-progress-spinner class="loading-spinner" mode="indeterminate"></mat-progress-spinner>-->
-<!--  <p class="loading-message">Loading profile data...</p>-->
-<!--</div>-->
 
 <div *ngIf="!isLoading && !profile" class="loading-container">
   <p class="loading-message">No profile data available.</p>

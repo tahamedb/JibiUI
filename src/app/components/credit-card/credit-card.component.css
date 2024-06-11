@@ -71,6 +71,8 @@
   flex-wrap: wrap;
   padding: 0.75rem;
   inset: 0;
+  color: orange;
+
 }
 
 .card__logo,
@@ -82,6 +84,7 @@
   font-weight: bold;
   font-style: italic;
   font-size: 40px;
+  color: orange;
 }
 
 .card__chip {
@@ -124,9 +127,11 @@
 }
 
 .card__number {
+
   font-size: 2rem;
   display: flex;
   justify-content: space-between;
+
 }
 
 .card__valid-thru,
@@ -213,13 +218,7 @@
   background-image: linear-gradient(-80deg,hsla(0,0%,100%,0.3) 25%,hsla(0,0%,100%,0) 45%);
 }
 
-/* Dark theme */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: hsl(var(--hue),10%,30%);
-    --fg: hsl(var(--hue),10%,90%);
-  }
-}
+
 
 /* Animation */
 @keyframes rotate_500 {

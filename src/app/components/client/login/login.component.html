@@ -27,11 +27,11 @@
     width: 100%;
     padding: 40px;
     border-radius: 16px;
-    background-color: rgba(22, 77, 84, 0.98);
+    background-color: transparent;
     backdrop-filter: blur(10px);
 
-    /*border: solid ;*/
-    /*border-color: #e78d43;*/
+    border: solid ;
+    border-color: #e78d43;
 
     /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
   }
@@ -49,6 +49,7 @@
   .form-field {
     width: 100%;
     margin-bottom: 20px;
+    color:orange;
   }
 
   .login-button {
@@ -57,26 +58,31 @@
     font-size: 16px;
     font-weight: 600;
     border-radius: 24px;
-    background-color: #ff6b6b;
+    background-color: #020000;
     color: #ffffff;
     transition: background-color 0.3s ease, transform 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
-
+input{
+  text-color: #ffffff;
+}
   .login-button:hover {
-    background-color: #ff4f4f;
+    background-color: #f1a44a;
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   }
 </style>
 
 <div class="login-container">
+
   <div class="login-wrapper">
+    <app-credit-card></app-credit-card>
+
     <mat-card class="login-card">
       <mat-card-title class="title">Connexion au compte client</mat-card-title>
       <mat-card-content>
         <form (ngSubmit)="onLogin()" #loginForm="ngForm">
-          <mat-form-field class="form-field" appearance="outline">
+          <mat-form-field class="form-field" appearance="fill" color="primary"  >
             <mat-label>Phone number</mat-label>
             <input
               matInput
@@ -85,11 +91,12 @@
               [(ngModel)]="loginModel.phone"
               name="phone"
               required
+              style="color:grey"
             />
             <mat-error>Please enter a valid phone number</mat-error>
           </mat-form-field>
 
-          <mat-form-field class="form-field" appearance="outline">
+          <mat-form-field class="form-field" appearance="fill">
             <mat-label>Mot de passe</mat-label>
             <input
               matInput
@@ -104,7 +111,6 @@
 
           <button
             mat-raised-button
-            color="primary"
             type="submit"
             class="login-button"
           >
@@ -114,6 +120,5 @@
       </mat-card-content>
     </mat-card>
 
-    <app-credit-card></app-credit-card>
   </div>
 </div>

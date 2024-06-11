@@ -1,22 +1,124 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>QR Code Scanner</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100">
-<div class="flex justify-center items-center min-h-screen">
-  <div class="bg-white p-8 rounded-lg shadow-lg">
-    <h1 class="text-2xl font-bold mb-4">QR Code Scanner</h1>
-    <div class="mb-4">
-      <input type="file" id="fileInput" accept="image/*" class="border border-gray-300 rounded-md px-3 py-2" />
+<style>
+  body {
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+  }
+  .card {
+    max-width: 900px;
+    margin: 40px auto;
+    margin-top: 40px;
+    padding: 20px;
+    border-radius: 16px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 200px;
+    height: 200px;
+    background-color: #ff9800;
+    border-radius: 50%;
+    opacity: 0.2;
+    z-index: -1;
+    animation: floating 5s ease-in-out infinite;
+  }
+  .card-content {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+  }
+  .card-title {
+    font-size: 35px;
+    font-weight: 700;
+    color: #ff5722;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  .form-group {
+    margin-bottom: 20px;
+  }
+  .form-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+  .form-group input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  .btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  .btn:hover {
+    background-color: #0056b3;
+  }
+  .btn:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+  }
+  .result {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .text-success {
+    color: #28a745;
+  }
+  .text-danger {
+    color: #dc3545;
+  }
+  @keyframes floating {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(20px, 20px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+</style>
+
+<div class="card">
+  <div class="card-content">
+    <h1 class="card-title">QR Code Scanner</h1>
+    <div class="form-group">
+      <label for="fileInput">Upload QR Code Image</label>
+      <input type="file" id="fileInput" (change)="onFileSelected($event)" accept="image/*"/>
     </div>
-    <button id="scanButton" disabled class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed">
-      Scan QR Code
-    </button>
-    <p id="result" class="mt-4 text-green-500"></p>
+    <button class="btn" (click)="scanQrCode()" [disabled]="!selectedFile">Scan QR Code</button>
+    <p id="result" class="result"></p>
   </div>
 </div>
+
 
 <script>
   const fileInput = document.getElementById('fileInput');
@@ -40,16 +142,15 @@
       .then(response => response.text())
       .then(decodedText => {
         resultElement.textContent = `Decoded QR code: ${decodedText}`;
+        resultElement.classList.remove('text-danger');
+        resultElement.classList.add('text-success');
         window.location.href = decodedText;
       })
       .catch(error => {
         resultElement.textContent = `Error scanning QR code: ${error}`;
-        resultElement.classList.remove('text-green-500');
-        resultElement.classList.add('text-red-500');
+        resultElement.classList.remove('text-success');
+        resultElement.classList.add('text-danger');
         console.error('Error scanning QR code:', error);
       });
   });
-
 </script>
-</body>
-</html>
