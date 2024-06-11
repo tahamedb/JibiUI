@@ -27,7 +27,7 @@
               <p class="text-gray-700 font-bold">
                 {{ transactionType === 'donation' ? 'Donateur' : transactionType === 'recharge' ? 'Rechargeur' : 'Facturant' }}
               </p>
-              <p>{{ formData['donateur'] || formData['rechargeur'] || formData['facturant'] || 'N/A' }}</p>
+              <p>{{ client_name || 'N/A' }}</p>
             </div>
           </div>
         </div>

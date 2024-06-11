@@ -23,6 +23,7 @@ export class FactureFormComponent implements OnInit {
   message: string='';
   factureid: string='';
   clientid: number | undefined=this.userSessionService.getUserData()?.id;
+  client_name: string =this.userSessionService.getUserData()?.firstname + " " + this.userSessionService.getUserData()?.lastname;
 
   constructor(private userSessionService : UserSessionService   ,private router: Router, private factureService: FactureService, private otpService: OtpService) {
     const navigation = this.router.getCurrentNavigation();

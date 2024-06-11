@@ -26,6 +26,9 @@ console.log(this.loginModel.phone)
     this.clientAccountService.login(this.loginModel).subscribe(
       (response: any) => {
         console.log('Login response:', response);
+        console.log('Login successful', response);
+        localStorage.setItem('jwt', response.jwt);
+        localStorage.setItem('role', response.role);
 
         this.userSessionService.setPhoneNumber(this.loginModel.phone);
         this.userSessionService.setClient(response.client);

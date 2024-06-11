@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from './auth.service';
+import { AuthService } from './auth.service'; // Adjust the path as necessary
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +12,18 @@ export class AuthGuard implements CanActivate {
 
   canActivate(
     next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    state: RouterStateSnapshot
+  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const requiredRole = next.data['role'];
-    console.log("logged in = " + this.authService.isLoggedIn());
-    console.log("required role = " + this.authService.hasRole(requiredRole));
-    if (this.authService.isLoggedIn() && this.authService.hasRole(requiredRole)) {
+
+    const isLoggedIn = this.authService.isLoggedIn();
+    const hasRequiredRole = !requiredRole || this.authService.hasRole(requiredRole);
+
+    console.log("logged in = " + isLoggedIn);
+    console.log("required role = " + requiredRole);
+    console.log("user has required role = " + hasRequiredRole);
+
+    if (isLoggedIn && hasRequiredRole) {
       return true;
     } else {
       // Redirect the user to the login page

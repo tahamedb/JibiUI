@@ -32,6 +32,13 @@ export class ProfileComponent implements OnInit {
   }
 
   generateQrCodeUrl(receiverId: string): string {
-    return `{"phone":"${{receiverId}}"}`;
-  }
+      // Create a JSON object with the phone number
+      const jsonObject = {
+        phone: receiverId
+      };
+
+      // Convert the JSON object to a string
+      return JSON.stringify(jsonObject);
+    }
+
 }

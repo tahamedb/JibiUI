@@ -19,7 +19,7 @@ import {LoginAgentComponent} from "./components/agent/login_admin/login.componen
 import {HomepageComponent} from "./components/homepage/homepage.component";
 import {CreditCardComponent} from "./components/credit-card/credit-card.component";
 
-const routes: Routes = [
+const routes : Routes = [
   {
     path: '',
     redirectTo: '/login',
@@ -28,40 +28,97 @@ const routes: Routes = [
   {
     path: 'homepage',
     component: ClientHomepageComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'credit',
     component: CreditCardComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'creance/:id/:type',
     component: DynamicFormComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'facture',
     component: FactureFormComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'historique',
     component: TransactionHistoryComponent,
-  },  { path: 'account-opening', component: AccountOpeningComponent },
-  { path: 'registration-success', component: RegistrationSuccessComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'change-password', component: ChangePasswordComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'transfert', component: TransferComponent },
-  { path: 'p-wallet', component: QrCodeScannerComponent },
-  {path:'add-agent',component:RegistrationComponent, canActivate: [AuthGuard], data: { role: 'ROLE_BACKOFFICE' }},
-  { path: 'otp-validation', component: OtpvalidationComponent }, // Page de validation OTP
-  { path: 'agent-change-password', component: AgentChangePasswordComponent }, // Page de changement de mot de passe de l'agent
-  { path: 'loginAgent', component: LoginAgentComponent },
-  { path: 'qr-scanner', component: QrCodeScannerComponent },
-  { path: 'client-account-creation', component: AccountOpeningComponent },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'account-opening',
+    component: AccountOpeningComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'registration-success',
+    component: RegistrationSuccessComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'change-password',
+    component: ChangePasswordComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'transfert',
+    component: TransferComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'p-wallet',
+    component: QrCodeScannerComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'add-agent',
+    component: RegistrationComponent,
+    canActivate: [AuthGuard],
+    data: { role: 'ROLE_BACKOFFICE' }
+  },
+  {
+    path: 'otp-validation',
+    component: OtpvalidationComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'agent-change-password',
+    component: AgentChangePasswordComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'loginAgent',
+    component: LoginAgentComponent
+  },
+  {
+    path: 'qr-scanner',
+    component: QrCodeScannerComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'client-account-creation',
+    component: AccountOpeningComponent,
+    canActivate: [AuthGuard]
+  },
   {
     path: 'acceuil',
     component: ClientHomepageComponent,
+    canActivate: [AuthGuard]
   },
-
 ];
 
 @NgModule({
